@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import Logo from '../assets/logo.svg';
 import colors from '../colors';
+import Input from '../components/input';
 
 const { height, width } = Dimensions.get('window');
 
 export default function HomeScreen() {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
   return (
     <View style={styles.container}>
@@ -14,7 +17,18 @@ export default function HomeScreen() {
             <Text style={styles.title}>Account {'\n'}Manager</Text>      
         </View>
         <View style={styles.middle}>
-            <Text style={styles.subtitle}>Bem-Vindo de Volta!</Text>      
+            <Text style={styles.subtitle}>Bem-Vindo de Volta!</Text>    
+            <Input
+                label="Email"
+                placeholder="Enter your email"
+                value={email}
+                onChangeText={setEmail}/>
+            <Input
+                label="Password"
+                placeholder="Enter your password"
+                value={password}
+                onChangeText={setPassword}
+                secureTextEntry/>
         </View>
     </View>
   );
